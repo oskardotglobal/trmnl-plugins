@@ -1,0 +1,7 @@
+# trmnlp build output
+_build/
+
+# plugin boilerplate
+*/.github
+*/.gitignore
+
