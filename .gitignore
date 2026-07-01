@@ -5,3 +5,9 @@ _build/
 */.github
 */.gitignore
 
+# direnv
+.envrc
+.direnv
+
+# python
+__pycache__

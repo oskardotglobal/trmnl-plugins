@@ -1,0 +1,44 @@
+#
+# Changes to this file will be overwritten by `trmnlp pull`.
+#
+# Docs: https://help.trmnl.com/en/articles/10542599-importing-and-exporting-private-plugins#h_581fb988f0
+#
+---
+id: 019f1eca-3321-7009-904d-fac2942ec96d
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+framework_version: latest
+serverless_language: python
+polling_url: 'https://httpbin.org/get?mode={{ display_mode }}&counter={{ counter_type }}'
+polling_headers: ''
+name: Days Since Last X
+refresh_interval: 1440
+custom_fields:
+  - keyname: display_mode
+    field_type: select
+    name: Display Mode
+    options:
+      - "Days Since Last X: days_since"
+      - "Meme of the Week: meme"
+    default: days_since
+    conditional_validation:
+      - when: "days_since"
+        required:
+          - counter_type
+      - when: "meme"
+        hidden:
+          - counter_type
+
+  - keyname: counter_type
+    field_type: select
+    name: Counter Type
+    description: Which "days since" counter to display
+    options:
+      - "student_telegram"
+      - "rust_mc_server"
+      - "random"
+    default: random
+    optional: true
